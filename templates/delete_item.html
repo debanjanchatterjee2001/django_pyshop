@@ -5,17 +5,18 @@
   {% endblock %}
 </head>
 <style>
-  #yes {
-    position: absolute;
-    left: 25%;
-  }
   #mydiv {
     position: relative;
-    padding: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 </style>
 <div id="mydiv">
-  <strong><h2>Item removed from cart</h2></strong><br />
+  <strong><h2>Item removed.</h2></strong><br />
 </div>
-<a href="/products/" class="btn btn-primary" id="yes">Continue shopping</a>
+<br /><br />
+<div id="mydiv">
+  <a href="/products/" class="btn btn-primary" id="yes">Continue shopping</a>
+</div>
 {% endblock %}

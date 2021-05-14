@@ -21,7 +21,7 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="/about">PyShop</a>
+      <a class="navbar-brand" href="/about"><b>PyShop</b></a>
       <button
         class="navbar-toggler"
         type="button"
@@ -40,34 +40,51 @@
               >Home <span class="sr-only">(current)</span></a
             >
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/products">Products</a>
+          <li class="nav-item active">
+            <a class="nav-link" href="/products"
+              >Products<span class="sr-only">(current)</span></a
+            >
           </li>
           {% if user.is_authenticated %}
-          <li class="nav-item">
-            <a class="nav-link" href="/cart">Your Cart</a>
+          <li class="nav-item active">
+            <a class="nav-link" href="/cart"
+              >Your Cart<span class="sr-only">(current)</span></a
+            >
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Your Orders</a>
+          <li class="nav-item active">
+            <a class="nav-link" href="/orders"
+              >Your Orders<span class="sr-only">(current)</span></a
+            >
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/account/logout">Logout</a>
+          <li class="nav-item active">
+            <a class="nav-link" href="/account/logout"
+              >Logout<span class="sr-only">(current)</span></a
+            >
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/contact">Contact</a>
+          <li class="nav-item active">
+            <a class="nav-link" href="/contact"
+              >Contact<span class="sr-only">(current)</span></a
+            >
           </li>
-          <h3 class="nav-item">
-            <a href="#">Hello, {{user.first_name}}</a>
+          <br />
+          <h3 class="nav-item active">
+            <a>Hello, {{user.first_name}}</a>
           </h3>
           {% else %}
-          <li class="nav-item">
-            <a class="nav-link" href="/account/register">Register</a>
+          <li class="nav-item active">
+            <a class="nav-link" href="/account/register"
+              >Register<span class="sr-only">(current)</span></a
+            >
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/account/login">Login</a>
+          <li class="nav-item active">
+            <a class="nav-link" href="/account/login"
+              >Login<span class="sr-only">(current)</span></a
+            >
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/contact">Contact</a>
+          <li class="nav-item active">
+            <a class="nav-link" href="/contact"
+              >Contact<span class="sr-only">(current)</span></a
+            >
           </li>
           {% endif %}
         </ul>

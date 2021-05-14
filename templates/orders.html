@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block content %}
 <head>
   {% block title %}
-  <title>Your Cart</title>
+  <title>Your Orders</title>
   {% endblock %}
 </head>
 <style>
@@ -17,11 +17,11 @@
   }
 </style>
 <div class="" id="mydiv">
-  <h4>Cart</h4>
+  <h4>Orders</h4>
 </div>
 <div class="container">
   <div class="row">
-    {% for product in products %} {% if product.status == "In cart" %}
+    {% for product in products %} {% if product.status != "In cart" %}
     <div class="col">
       <div class="card" style="width: 18rem">
         <img src="{{product.img_url}}" class="card-img-top" alt="..." />
@@ -35,7 +35,7 @@
               name="item"
               value="{{product.name}}"
             >
-              Remove from cart
+              Cancel order
             </button>
           </form>
         </div>
@@ -44,26 +44,9 @@
     {% endif %} {% endfor %}
   </div>
 </div>
-{% if t != 0 %}
-<div class="container" id="mydiv2">
-  <form action="/orders/" method="POST">
-    {% csrf_token %}
-    <button type="submit" class="btn btn-primary btn-lg" id="cheackout">
-      Cheackout
-    </button>
-    <a href="/products/" class="btn btn-primary btn-lg" id="continue"
-      >Continue shopping</a
-    >
-  </form>
-</div>
-{% else %}
-<div class="container" id="mydiv2">
-  <strong><h3>Your cart is empty</h3></strong><br />
-</div>
-<br /><br />
 <div class="container" id="mydiv2">
   <a href="/products/" class="btn btn-primary btn-lg" id="continue"
     >Continue shopping</a
   >
 </div>
-{% endif %} {% endblock %}
+{% endblock %}
