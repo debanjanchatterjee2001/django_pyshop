@@ -1,0 +1,41 @@
+<style>
+  #mydiv {
+    padding: 12px;
+    animation: transition 2s;
+  }
+  #mydiv p {
+    animation: transition 5s;
+  }
+  @keyframes transition {
+    from {
+      position: relative;
+      top: 6%;
+      opacity: 0;
+    }
+    to {
+      position: relative;
+      top: 0%;
+      opacity: 1;
+    }
+  }
+</style>
+{% extends 'base.html' %} {% block content %}
+<div id="mydiv">
+  <h1 id="head1">PyShop</h1>
+  <h3 id="head3">Fresh Fruits, at reasonable prices....</h3>
+  <p id="para">Delivered at your doorstep without any extra charges....</p>
+</div>
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner" role="listbox">
+    {% for product in products %} {% if forloop.counter == 1 %}
+    <div class="carousel-item active">
+      {% else %}
+      <div class="carousel-item">
+        {% endif %}
+        <img src="{{product.img_upload.url}}" class="d-block w-100" alt="..." />
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

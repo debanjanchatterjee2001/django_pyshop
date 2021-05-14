@@ -1,0 +1,60 @@
+{% extends 'base.html' %} {% block content %}
+<head>
+  {% block title %}
+  <title>Your Cart</title>
+  {% endblock %}
+</head>
+<style>
+  #cheackout {
+    position: absolute;
+    left: 50%;
+    top: 90%;
+  }
+
+  #continue {
+    position: absolute;
+    left: 35%;
+    top: 90%;
+  }
+  #mydiv {
+    position: relative;
+    padding: 12px;
+  }
+</style>
+<div class="" id="mydiv">
+  <h4>Cart</h4>
+</div>
+<div class="container">
+  <div class="row">
+    {% for product in products %}
+    {% if product.status == "In cart" %}
+    <div class="col">
+      <div class="card" style="width: 18rem">
+        <img src="{{product.img_url}}" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">{{product.name}} (x{{product.quantity}})</h5>
+          <p class="card-text">${{product.price}}</p>
+          <form action="delete/">
+            <button
+              type="submit"
+              class="btn btn-primary"
+              name="item"
+              value="{{product.name}}"
+            >
+              Remove from cart
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+  </div>
+</div>
+<div class="container">
+  <a type="button" class="btn btn-primary btn-lg" id="cheackout">Cheackout</a>
+  <a href="/products/" class="btn btn-primary btn-lg" id="continue"
+    >Continue shopping</a
+  >
+</div>
+{% endblock %}

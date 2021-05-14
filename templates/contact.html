@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+  {% block content %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    {% block title %}
+    <title>PyShop-Contact</title>
+    {% endblock %}
+  </head>
+  <style>
+    #mydiv {
+      position: relative;
+      padding: 10px;
+      margin: 10px;
+      animation: transition 1s;
+    }
+    #mydiv p {
+      animation: transition 3s;
+    }
+    @keyframes transition {
+      from {
+        position: relative;
+        top: 6%x;
+        opacity: 0;
+      }
+      to {
+        position: relative;
+        top: 0%;
+        opacity: 1;
+      }
+    }
+  </style>
+  <body>
+    <div id="mydiv">
+      <h3>Customer Support</h3>
+      <h5>For any help or information, contact</h5>
+      <ul>
+        <li>Phone : +91 8585028223</li>
+        <li>Email : chatterjeee.debanjan@gmail.com</li>
+      </ul>
+    </div>
+  </body>
+  {% endblock %}
+</html>

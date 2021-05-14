@@ -1,0 +1,41 @@
+{% extends 'base.html' %} {% block content %}
+<head>
+  {% block title %}
+  <title>Select Quantity</title>
+  {% endblock %}
+</head>
+<style>
+  #mydiv {
+    position: relative;
+    padding: 12px;
+  }
+</style>
+<div class="" id="mydiv">
+  <h4>Cart</h4>
+</div>
+<div class="container">
+  <div class="row">
+    {% for product in products %}
+    <div class="col">
+      <div class="card" style="width: 18rem">
+        <img src="{{product.img_upload.url}}" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">{{product.name}}</h5>
+          <p class="card-text">${{product.price}}</p>
+          <form action="/cart/" method="post">
+            {% csrf_token %}
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Quantity</span>
+              </div>
+              <input type="number" name="quantity" class="form-control" />
+            </div>
+            <button type="submit" class="btn btn-primary">Confirm</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

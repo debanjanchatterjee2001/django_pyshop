@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+<html lang="en">
+  {% block content %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    {% block title %}
+    <title>About PyShop</title>
+    {% endblock %}
+  </head>
+  <style>
+    #mydiv {
+      padding: 12px;
+      margin: 10px;
+      animation: transition 1s;
+    }
+    #mydiv p {
+      animation: transition 3s;
+    }
+    @keyframes transition {
+      from {
+        position: relative;
+        top: 6%x;
+        opacity: 0;
+      }
+      to {
+        position: relative;
+        top: 0%;
+        opacity: 1;
+      }
+    }
+  </style>
+  <body>
+    <div id="mydiv">
+      <h1>About PyShop</h1>
+      <p>
+        PyShop is an imaginary E-commerce website and the first web development
+        project by Debanjan Chattopadhyay.<br />
+        It's an open source project. So, if you want to add or upgrade something
+        feel free to go to my github page:
+        <a
+          href="https://github.com/debanjanchatterjee2001/django_pyshop"
+          target="_blank"
+          >github.com/debanjanchatterjee2001/django_pyshop</a
+        ><br />
+        It will help me become a better coder.<br /><br />
+        Thank you for visiting,<br />
+        Debanjan Chattopadhyay<br />
+      </p>
+    </div>
+  </body>
+  {% endblock %}
+</html>

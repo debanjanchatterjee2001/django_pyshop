@@ -1,0 +1,21 @@
+{% extends 'base.html' %} {% block content %}
+<head>
+  {% block title %}
+  <title>Delete an item</title>
+  {% endblock %}
+</head>
+<style>
+  #yes {
+    position: absolute;
+    left: 25%;
+  }
+  #mydiv {
+    position: relative;
+    padding: 14px;
+  }
+</style>
+<div id="mydiv">
+  <strong><h2>Item removed from cart</h2></strong><br />
+</div>
+<a href="/products/" class="btn btn-primary" id="yes">Continue shopping</a>
+{% endblock %}
