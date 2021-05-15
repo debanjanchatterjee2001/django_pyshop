@@ -51,7 +51,11 @@ def orders(request):
         if request.method == 'POST':
             orders = Item.objects.filter(status="In cart")
             orders.update(status="Order received")
+        
+        t = 0
         orders = Item.objects.filter(Q(status="Order received") | Q(status="Out for delivery") | Q(status="Delivered"))
-        return render(request, 'orders.html', {'products': orders})
+        for i in orders:
+            t += 1
+        return render(request, 'orders.html', {'products': orders, 't': t})
     else:
         return redirect('login')

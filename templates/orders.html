@@ -44,6 +44,12 @@
     {% endif %} {% endfor %}
   </div>
 </div>
+{% if t == 0 %}
+<div class="container" id="mydiv2">
+  <strong><h3>No orders yet</h3></strong><br />
+</div>
+{% endif %}
+<br /><br />
 <div class="container" id="mydiv2">
   <a href="/products/" class="btn btn-primary btn-lg" id="continue"
     >Continue shopping</a
