@@ -13,11 +13,11 @@ for item in items:
 def home(request):
     random.seed(datetime.now())
     random.shuffle(products)
-    return render(request, 'home.html', {'products': products})
+    return render(request, 'home.html', {'products': products, 'nbar': 'home'})
 
 
 def contact(request):
-    return render(request, 'contact.html')
+    return render(request, 'contact.html', {'nbar': 'contact'})
 
 
 def about(request):

@@ -6,4 +6,4 @@ products = Product.objects.all()
 
 # Create your views here.
 def index(request):
-    return render(request, 'index.html', {'products': products})
+    return render(request, 'index.html', {'products': products, 'nbar': 'products'})

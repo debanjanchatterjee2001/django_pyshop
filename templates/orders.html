@@ -5,29 +5,32 @@
   {% endblock %}
 </head>
 <style>
-  #mydiv2 {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  #mydiv {
-    position: relative;
-    padding: 12px;
-  }
+#mydiv2 {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#mydiv {
+  position: relative;
+  padding: 12px;
+}
+tr{
+    text-align: center;
+}
 </style>
 <div class="" id="mydiv">
   <h4>Orders</h4>
 </div>
 <div class="container">
   <div class="row">
-    {% for product in products %} {% if product.status != "In cart" %}
     <div class="col">
+      {% for product in products %}
+      {% if product.status == "Order received" %}
       <div class="card" style="width: 18rem">
         <img src="{{product.img_url}}" class="card-img-top" alt="..." />
         <div class="card-body">
           <h5 class="card-title">{{product.name}} (x{{product.quantity}})</h5>
-          <p class="card-text">${{product.price}}</p>
           <form action="delete/">
             <button
               type="submit"
@@ -41,18 +44,77 @@
         </div>
       </div>
     </div>
-    {% endif %} {% endfor %}
+    {% endif %}
+    <div class="container">
+      <div class="row">
+        {% if product.status == "Out for delivery" %}
+        <div class="col">
+          <div class="card" style="width: 18rem">
+            <img src="{{product.img_url}}" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">
+                {{product.name}} (x{{product.quantity}})
+              </h5>
+            </div>
+          </div>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% if t != 0 %}
+    <div class="container" id="mydiv">
+    <hr>
+    <table style="width: 100%">
+      <tr>
+        <th>Items</th>
+        <th>Status</th>
+        <th>Amount Payable(Incl. all taxes)</th>
+      </tr>
+      <tr>
+        <td>{% for product in products %} {% if product.status == "Order received" %} {{product.name}}    {% endif %}{% endfor %}</td>
+        <td>Order received</td>
+        <td>$ {{received}}</td>
+      </tr>
+      <tr>
+        <td>{% for product in products %} {% if product.status == "Out for delivery" %} {{product.name}}    {%endif%}{% endfor %}</td>
+        <td>Out for delivery</td>
+        <td>$ {{out}}</td>
+      </tr>
+    </table>
+    <hr>
+    </div>
+    {% else %}
+    <div class="container" id="mydiv2">
+      <strong><h3>No recent orders</h3></strong><br />
+    </div>
+    {% endif %}
+    <br /><br />
+    <div class="container" id="mydiv2">
+      <a href="/products/" class="btn btn-primary btn-lg" id="continue"
+        >Continue shopping</a
+      >
+    </div>
+      </div>
+    </div>
   </div>
 </div>
-{% if t == 0 %}
-<div class="container" id="mydiv2">
-  <strong><h3>No orders yet</h3></strong><br />
+<hr>
+<div class="" id="mydiv">
+<h4>Delivered</h4>
 </div>
-{% endif %}
-<br /><br />
-<div class="container" id="mydiv2">
-  <a href="/products/" class="btn btn-primary btn-lg" id="continue"
-    >Continue shopping</a
-  >
+<div class="container">
+<div class="row">
+{% for product in products %} {% if product.status == "Delivered" %}
+<div class="col">
+  <div class="card" style="width: 18rem">
+    <img src="{{product.img_url}}" class="card-img-top" alt="..." />
+    <div class="card-body">
+      <h5 class="card-title">
+        {{product.name}} (x{{product.quantity}})
+      </h5>
+      <p class="card-text">$ {{product.price}}</p>
+    </div>
+  </div>
 </div>
-{% endblock %}
+{% endif %} {% endfor %} {% endblock %}

@@ -15,6 +15,9 @@
     position: relative;
     padding: 12px;
   }
+  tr {
+    text-align: center;
+  }
 </style>
 <div class="" id="mydiv">
   <h4>Cart</h4>
@@ -45,6 +48,34 @@
   </div>
 </div>
 {% if t != 0 %}
+<div class="container" id="mydiv">
+  <hr />
+  <table style="width: 100%">
+    <tr>
+      <th>Items</th>
+      <th>Price</th>
+    </tr>
+    {% for product in products %} {% if product.status == "In cart" %}
+    <tr>
+      <td>{{product.name}}</td>
+      <td>${{product.price}}</td>
+    </tr>
+    {% endif %} {% endfor %}
+    <tr>
+      <td>Total</td>
+      <td>${{total}}</td>
+    </tr>
+    <tr>
+      <td>Tax(+ 12%)</td>
+      <td>+ ${{tax}}</td>
+    </tr>
+    <tr>
+      <td>Amount payable</td>
+      <td>= $<u>{{amount}}</u> (Inclusive all taxes)</td>
+    </tr>
+  </table>
+  <hr />
+</div>
 <div class="container" id="mydiv2">
   <form action="/orders/" method="POST">
     {% csrf_token %}
