@@ -27,7 +27,7 @@ def cart(request):
                             quantity=int(quantity),
                             price=total_price, img_url=items[0].img_upload.url)
         pr = 0
-        cart_item = Item.objects.filter(user=request.user)
+        cart_item = Item.objects.filter(user=request.user, status="In cart")
         for i in cart_item:
                 pr += i.price
         tax = pr * 0.12
@@ -55,7 +55,7 @@ def cart(request):
 def delete_item(request):
     user = request.user
     item = request.GET.get('item', None)
-    cart_item = Item.objects.filter(user=user, name=item)
+    cart_item = Item.objects.filter(Q(user=user) & (Q(name=item) & (Q(status="In cart") | Q(status="Order received"))))
     cart_item.delete()
     return render(request, 'delete_item.html')
 
